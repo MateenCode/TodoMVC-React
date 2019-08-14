@@ -7,8 +7,9 @@ export const fetchTodos = _ =>
     type: TODOS
   });
 
-export const createTodos = _ =>
+export const createTodos = todo =>
   CreateActionCreator.create({
     path: "/todos",
-    type: TODOS
+    type: TODOS,
+    todo
   });
