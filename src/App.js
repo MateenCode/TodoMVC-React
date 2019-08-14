@@ -1,9 +1,14 @@
-import React, { Component } from "react";
-import "./css/App.css";
+import React, { PureComponent } from "react";
 
-class App extends Component {
+import { Home } from "containers";
+
+class App extends PureComponent {
   render() {
-    return <div className="App">hello</div>;
+    return (
+      <>
+        <Home />
+      </>
+    );
   }
 }
 
