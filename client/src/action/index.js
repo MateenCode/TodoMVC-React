@@ -3,13 +3,13 @@ import { TODOS } from "configs/types";
 
 export const fetchTodos = _ =>
   CreateActionCreator.read({
-    path: "/todos",
+    path: "/api/todo",
     type: TODOS
   });
 
 export const createTodos = todo =>
   CreateActionCreator.create({
-    path: "/todos",
+    path: "/api/todo",
     type: TODOS,
-    todo
+    body: todo.title
   });

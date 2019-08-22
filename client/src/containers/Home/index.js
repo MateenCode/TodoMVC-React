@@ -6,7 +6,7 @@ import { Todo, TodoForm } from "components";
 /*
   1. display todos  ✔️
   2. add todo
-  3. cross off todo 
+  3. cross off todo ✔️
   4. show number of active todos 
   5. filter all/active/complete 
   6. delete todo
@@ -31,8 +31,8 @@ class index extends PureComponent {
         {todos &&
           todos.length > 0 &&
           todos.map(item => (
-            <div key={item.id}>
-              <Todo id={item.id} title={item.title} />
+            <div key={item._id}>
+              <Todo id={item._id} title={item.title} complete={item.complete} />
             </div>
           ))}
       </section>
