@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Todo({ title, complete }) {
+export default function Todo({ title, complete, handleDelete }) {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div
@@ -10,7 +10,8 @@ export default function Todo({ title, complete }) {
       >
         {title}
       </div>
-      {/* <button onClick={props.onDelete}>x</button> */}
+
+      <button onClick={handleDelete}>x</button>
     </div>
   );
 }
