@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Todo({ id, title, complete, handleDelete, toggle }) {
+export default function Todo({ title, complete, handleDelete, toggle }) {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div

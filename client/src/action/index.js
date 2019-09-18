@@ -25,7 +25,7 @@ export const deleteTodo = id => async dispatch => {
 };
 
 // Toggle complete
-export const toggle = id => async dispatch => {
-  await axios.put(`/todos/${id}`);
-  dispatch({ type: PATCH_TODO, payload: id });
+export const toggle = (id, formValues) => async dispatch => {
+  const response = await axios.patch(`/todos/${id}`, formValues);
+  dispatch({ type: PATCH_TODO, payload: response.data });
 };

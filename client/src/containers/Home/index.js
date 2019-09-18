@@ -8,7 +8,7 @@ import TodoForm from "./TodoForm";
 /*
   1. display todos✔️
   2. add todo✔️
-  3. cross off todo 
+  3. cross off todo✔️ 
   4. show number of active todos 
   5. filter all/active/complete 
   6. delete todo✔️
@@ -32,8 +32,13 @@ class index extends PureComponent {
   };
 
   // toggle complete
-  toggle = id => {
-    this.props.toggle(id);
+  toggle = todo => {
+    this.props.toggle(todo.id, {
+      ...todo,
+      title: todo.title,
+      complete: !todo.complete,
+      id: todo.id
+    });
   };
 
   render() {
@@ -48,8 +53,8 @@ class index extends PureComponent {
               key={todo.id}
               title={todo.title}
               complete={todo.complete}
-              toggle={this.toggle.bind(this, todo.id)}
               handleDelete={this.handleDelete.bind(this, todo.id)}
+              toggle={this.toggle.bind(this, todo)}
             />
           ))}
       </section>

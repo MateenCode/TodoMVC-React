@@ -26,7 +26,7 @@ export default function(state = [], action) {
       return {
         ...state,
         todos: state.todos.map(todo => {
-          if (todo.id === action.payload) {
+          if (todo.id === action.payload.id) {
             return {
               ...todo,
               complete: !todo.complete
