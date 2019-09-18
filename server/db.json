@@ -1,14 +1,7 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "wash car",
-      "completed": false
-    },
-    {
-      "id": 2,
-      "title": "Clean the windows",
-      "completed": false
+      "id": 2
     },
     {
       "id": "JYTMOiFR",
@@ -16,18 +9,8 @@
       "complete": false
     },
     {
-      "id": "DOf-TXyv",
-      "title": "clean dishes",
-      "complete": false
-    },
-    {
-      "id": "d7GaKMS5",
-      "title": "clean dishes",
-      "complete": false
-    },
-    {
-      "id": "M4flldOJ",
-      "title": "clean dishes",
+      "id": "nHbRgmfF",
+      "title": "wash the car",
       "complete": false
     }
   ]

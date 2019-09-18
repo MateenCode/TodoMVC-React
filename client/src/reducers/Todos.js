@@ -1,4 +1,9 @@
-import { FETCH_TODOS, CREATE_TODO, DELETE_TODO } from "../configs/types";
+import {
+  FETCH_TODOS,
+  CREATE_TODO,
+  DELETE_TODO,
+  PATCH_TODO
+} from "../configs/types";
 
 export default function(state = [], action) {
   switch (action.type) {
@@ -16,6 +21,20 @@ export default function(state = [], action) {
       return {
         ...state,
         todos: state.todos.filter(todo => todo.id !== action.payload)
+      };
+    case PATCH_TODO:
+      return {
+        ...state,
+        todos: state.todos.map(todo => {
+          if (todo.id === action.payload) {
+            return {
+              ...todo,
+              complete: !todo.complete
+            };
+          } else {
+            return todo;
+          }
+        })
       };
     default:
       return state;
