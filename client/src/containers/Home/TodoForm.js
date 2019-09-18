@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import shortid from "shortid";
 
 export default class TodoForm extends PureComponent {
   state = {
@@ -14,7 +15,11 @@ export default class TodoForm extends PureComponent {
   handleSubmit = e => {
     e.preventDefault();
 
-    this.props.handleSubmit(this.state.title);
+    this.props.handleSubmit({
+      id: shortid.generate(),
+      title: this.state.title,
+      complete: false
+    });
 
     this.setState({
       title: ""

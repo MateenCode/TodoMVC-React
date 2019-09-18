@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import { fetchTodos } from "action";
+import { fetchTodos, createTodo } from "action";
 
 import Todo from "./Todo";
 import TodoForm from "./TodoForm";
@@ -21,18 +21,23 @@ class index extends PureComponent {
     this.props.fetchTodos();
   }
 
-  // handleSubmit = todo => {
-  //   this.props.createTodos(todo);
-  // };
+  componentDidUpdate(prevProps) {
+    if (prevProps.todos.length !== this.props.todos.todos.length) {
+      return this.props.fetchTodos();
+    }
+  }
+
+  handleSubmit = todo => {
+    this.props.createTodo(todo);
+  };
 
   render() {
     const { todos } = this.props.todos;
-
     return (
       <section className='container'>
         <TodoForm handleSubmit={this.handleSubmit} />
-
         {todos &&
+          todos.length > 0 &&
           todos.map(todo => (
             <div key={todo.id}>
               <Todo title={todo.title} complete={todo.complete} />
@@ -43,11 +48,9 @@ class index extends PureComponent {
   }
 }
 
-const mapStateToProps = state => ({
-  todos: state.todos
-});
+const mapStateToProps = ({ todos }) => ({ todos });
 
 export default connect(
   mapStateToProps,
-  { fetchTodos }
+  { fetchTodos, createTodo }
 )(index);
