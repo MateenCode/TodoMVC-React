@@ -1,5 +1,3 @@
-import CreateActionCreator from "./createActionCreator";
-import CreateReducer from "./createReducer";
-import Fetch from "./fetch";
+import axios from "./axios";
 
-export { CreateActionCreator, CreateReducer, Fetch };
+export { axios };

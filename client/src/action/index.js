@@ -1,15 +1,8 @@
-import { CreateActionCreator } from "helpers";
-import { TODOS } from "configs/types";
+import { axios } from "../helpers";
+import { FETCH_TODOS } from "../configs/types";
 
-export const fetchTodos = _ =>
-  CreateActionCreator.read({
-    path: "/api/todo",
-    type: TODOS
-  });
-
-export const createTodos = todo =>
-  CreateActionCreator.create({
-    path: "/api/todo",
-    type: TODOS,
-    body: todo.title
-  });
+// Fetch All Todos
+export const fetchTodos = () => async dispatch => {
+  const response = await axios.get("/todos");
+  dispatch({ type: FETCH_TODOS, payload: response.data });
+};

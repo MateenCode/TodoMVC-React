@@ -1,12 +1,14 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import { fetchTodos, createTodos } from "action";
-import { Todo, TodoForm } from "components";
+import { fetchTodos } from "action";
+
+import Todo from "./Todo";
+import TodoForm from "./TodoForm";
 
 /*
   1. display todos  ✔️
   2. add todo
-  3. cross off todo ✔️
+  3. cross off todo 
   4. show number of active todos 
   5. filter all/active/complete 
   6. delete todo
@@ -19,20 +21,21 @@ class index extends PureComponent {
     this.props.fetchTodos();
   }
 
-  handleSubmit = todo => {
-    this.props.createTodos(todo);
-  };
+  // handleSubmit = todo => {
+  //   this.props.createTodos(todo);
+  // };
 
   render() {
-    const { todos } = this.props;
+    const { todos } = this.props.todos;
+
     return (
       <section className='container'>
         <TodoForm handleSubmit={this.handleSubmit} />
+
         {todos &&
-          todos.length > 0 &&
-          todos.map(item => (
-            <div key={item._id}>
-              <Todo id={item._id} title={item.title} complete={item.complete} />
+          todos.map(todo => (
+            <div key={todo.id}>
+              <Todo title={todo.title} complete={todo.complete} />
             </div>
           ))}
       </section>
@@ -40,9 +43,11 @@ class index extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ todos }) => ({ todos });
+const mapStateToProps = state => ({
+  todos: state.todos
+});
 
 export default connect(
   mapStateToProps,
-  { fetchTodos, createTodos }
+  { fetchTodos }
 )(index);

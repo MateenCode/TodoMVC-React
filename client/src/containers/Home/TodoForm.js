@@ -13,11 +13,8 @@ export default class TodoForm extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault();
-    let todo = {
-      title: this.state.title
-    };
 
-    this.props.handleSubmit(todo);
+    this.props.handleSubmit(this.state.title);
 
     this.setState({
       title: ""
