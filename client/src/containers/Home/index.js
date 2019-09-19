@@ -57,6 +57,10 @@ class index extends PureComponent {
               toggle={this.toggle.bind(this, todo)}
             />
           ))}
+        <p>
+          todos left:
+          {todos && todos.filter(todo => !todo.complete).length}
+        </p>
       </section>
     );
   }
